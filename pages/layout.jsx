@@ -1,7 +1,7 @@
-// import './globals.css'
-"use client"
 import { Inter } from 'next/font/google'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
+
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
@@ -10,6 +10,12 @@ export const metadata = {
 }
 
 export default function RootLayout({ children }) {
+
+  const router = useRouter();
+  const handleClick = (url) => {
+    router.push(url)
+  }
+
   return (
     <html lang="en">
       <body className={inter.className}>
@@ -19,8 +25,7 @@ export default function RootLayout({ children }) {
           <li><Link href={'/dashboard-app'}>Dashboard App</Link></li>
           <li><Link href={'/settings-app'}>Settings</Link></li>
           <li><Link href={'/user-app'}>User App</Link></li>
-          <li><Link href={'/cari'}>Cari orang</Link></li>
-          <li><Link href={'/dashboard'}>Dashboard pages</Link></li>
+          <li><Link href={'/dashboard'}>Dashboard</Link></li>
         </ul>
 
         {children}
